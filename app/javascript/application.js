@@ -1,21 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Greeting from './components/Greeting';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Greeting from './components/Greets';
 import store from './redux/store';
 import { Provider } from 'react-redux';
-import { fetchGreeting } from './redux/greetings/greetingsSlice';
+import { fetchGreeting } from './redux/greetingsSlice';
 
 store.dispatch(fetchGreeting());
 
 function App() {
-  return (
-    <Router>
-      <Routes>
-        <Route path='/' exact element={<Greeting />} />
-      </Routes>
-    </Router>
-  );
+  return <Greeting />;
 }
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
