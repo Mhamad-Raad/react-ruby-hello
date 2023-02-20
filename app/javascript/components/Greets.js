@@ -3,18 +3,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchGreeting } from '../redux/greetingsSlice';
 
 const Greeting = () => {
-  const greetingShow = useSelector((state) => state.greetings.message);
+  const greetingShow = useSelector((state) => state.greetings.msg);
   const status = useSelector((state) => state.greetings.status);
   const dispatch = useDispatch();
   let content;
   if (status === 'succeeded') {
-    content = greetingShow.message;
+    content = greetingShow;
   }
 
   return (
     <>
-      <h1>Random Greeting:</h1>
-      <p>{content}</p>
+      <h1>Random Greeting: {content}</h1>
       <button type='button' onClick={() => dispatch(fetchGreeting())}>
         generate new
       </button>

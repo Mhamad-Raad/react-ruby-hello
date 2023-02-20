@@ -1,21 +1,25 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-const GREETINGS_URL = 'http://127.0.0.1:3000/greetings/random';
+
 
 export const fetchGreeting = createAsyncThunk(
   'greetings/fetchGreeting',
   async () => {
-    const response = await fetch(GREETINGS_URL)
-      .then((resp) => resp.json())
+    const response = await fetch('http://localhost:3000/api/greets')
+      .then((resp) => {
+        console.log(resp);
+        return resp.json();
+      })
       .then((result) => {
+        console.log(result);
         return result;
       });
-    return response.data;
+    return response;
   }
 );
 
 const initialState = {
-  message: [],
+  message: '',
   status: 'idle',
 };
 
@@ -26,7 +30,7 @@ export const greetingsSlice = createSlice({
   extraReducers(builder) {
     builder.addCase(fetchGreeting.fulfilled, (state, action) => {
       state.status = 'succeeded';
-      state.message = action.payload;
+      state.message = action.payload.msg;
     });
   },
 });
