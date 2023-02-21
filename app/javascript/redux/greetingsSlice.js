@@ -7,11 +7,9 @@ export const fetchGreeting = createAsyncThunk(
   async () => {
     const response = await fetch('http://localhost:3000/api/greets')
       .then((resp) => {
-        console.log(resp);
         return resp.json();
       })
       .then((result) => {
-        console.log(result);
         return result;
       });
     return response;
@@ -30,7 +28,6 @@ export const greetingsSlice = createSlice({
   extraReducers(builder) {
     builder.addCase(fetchGreeting.fulfilled, (state, action) => {
       state.status = 'succeeded';
-      console.log(action.payload);
       state.message = action.payload.msg;
     });
   },
