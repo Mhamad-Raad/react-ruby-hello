@@ -30,6 +30,7 @@ export const greetingsSlice = createSlice({
   extraReducers(builder) {
     builder.addCase(fetchGreeting.fulfilled, (state, action) => {
       state.status = 'succeeded';
+      console.log(action.payload);
       state.message = action.payload.msg;
     });
   },
