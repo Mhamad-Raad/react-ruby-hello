@@ -30,7 +30,7 @@ jobs:
           node-version: 18
       - name: Setup Stylelint
         run: |
-          npm install --save-dev stylelint@13 stylelint-scss@3 stylelint-config-standard@21 stylelint-csstree-validator@1
+          npm install --save-dev stylelint@15.2.0 stylelint-scss@4.4.0 stylelint-config-standard@30.0.1 stylelint-csstree-validator@2.1.0
           [ -f .stylelintrc.json ] || wget https://raw.githubusercontent.com/microverseinc/linters-config/master/ror/.stylelintrc.json
       - name: Stylelint Report
         run: npx stylelint "**/*.{css,scss}"
